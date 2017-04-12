@@ -13,7 +13,7 @@
                 $email = htmlentities($_POST['email']);
                 $phone = htmlentities($_POST['phone']);
                 $prefix = ($_POST['prefix']);
-                $address = htmlentities($_POST['address']);
+                
                 $sex=$_POST['sex'];
                 $answerFirst = $_POST['answerFirst'];
                 //$questionSecond = $_POST['secondQuestion'];
@@ -23,17 +23,34 @@
                 $year=$_POST['year'];
                 $birthDate=$year."-".$month."-".$day;
                 $phoneNumber=$prefix." ".$phone;
+                $street=$_POST['street'];
+                $building=$_POST['building'];
+                $flat=$_POST['flat'];
+                $postCode=$_POST['postCode'];
+                $city=$_POST['city'];
+                $country=$_POST['country'];
                 
                 
             
                 $val=new Validate();
                 $val->checkEmpty($name, 'name');
                 $val->checkEmpty($surname, 'surname');
-                $val->checkEmpty($address, 'adres');
+                $val->checkEmpty($street, 'street');
+                $val->checkEmpty($building, 'building');
+                $val->checkEmpty($flat, 'flat');
+                $val->checkEmpty($postCode, 'postCode');
+                $val->checkEmpty($city, 'city');
+                $val->checkEmpty($country, 'country');
+                
                 $val->minCharQuantity($name, 'name',25);
                 $val->minCharQuantity($surname, 'surname',40);
+                $val->minCharQuantity($street, 'street',40);
+                $val->minCharQuantity($city, 'city',40);
+                $val->minCharQuantity($country, 'country',35);
+                
                 $val->validateEmail($email, 'email');
                 $val->validatePhone($phone, 'phone');
+                $val->validatePostCode($postCode, 'postCode');
                 
                 $val->checkSelect($sex, 'sex');
                 $val->checkSelect($answerFirst, 'answerFirst');
@@ -50,10 +67,10 @@
                 
                 if($val->liczError==0) {
                  $conn = new DbConnect();
-                $query = "INSERT INTO user(name, surname, birthDate, sex, email, phone, address, answerFirst, answerSecond, date) VALUES('$name', '$surname', '$birthDate','$sex', '$email', '$phoneNumber', '$address', '$answerFirst','$answerSecond', '$date')";
+                $query = "INSERT INTO user(name, surname, birthDate, sex, email, phone, street, buildingNr, flatNr, postCode, city, country, answerFirst, answerSecond, date) VALUES('$name', '$surname', '$birthDate','$sex', '$email', '$phoneNumber', '$street', '$building', '$flat', '$postCode', '$city', '$country', '$answerFirst','$answerSecond', '$date')";
 
                 if ($conn->db->query($query) === TRUE) {
-                    echo "";
+                    echo header('Location: byebye.php');
                 } else {
                     echo "Error: " . $query . "<br>" . $conn->db->error;
                 }
@@ -68,13 +85,13 @@
             $tick='Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.';
             
 
-            $mail=new SendMail('Warsaw Contest');
-            $message="Name: $name<br><br> Surname: $surname<br><br> Birth date: $birthDate<br><br> Sex: $sex<br><br> "
-                    . "Phone number: $phoneNumber<br><br> Address: $address<br><br> First question: $question1<br><br> "
-                    . "Correct answer 1: $correctAnswer1<br><br><b> Your answer: $answerFirst</b><br><br> Second question: $question2<br><br> "
-                    . "Correct answer 2: $correctAnswer2<br><br><b> Your answer: $answerSecond</b><br><br> Tick agreement: $tick<br><br> Date: $date";
-            
-            $mail->send($email, 'Thank You for registration in contest About Warsaw!',$message );
+//            $mail=new SendMail('Warsaw Contest');
+//            $message="Name: $name<br><br> Surname: $surname<br><br> Birth date: $birthDate<br><br> Sex: $sex<br><br> "
+//                    . "Phone number: $phoneNumber<br><br> Address: $address<br><br> First question: $question1<br><br> "
+//                    . "Correct answer 1: $correctAnswer1<br><br><b> Your answer: $answerFirst</b><br><br> Second question: $question2<br><br> "
+//                    . "Correct answer 2: $correctAnswer2<br><br><b> Your answer: $answerSecond</b><br><br> Tick agreement: $tick<br><br> Date: $date";
+//            
+//            $mail->send($email, 'Thank You for registration in contest About Warsaw!',$message );
             }
         }
             
@@ -242,10 +259,40 @@
                     </div>
 
                     <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="textinput">Adress to send prize</label>
+                                        <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Street</label>
                         <div class="col-md-6">
-                            <input id="textinput" name="address" type="text" placeholder="Enter your adress" class="form-control input-md">
+                            <input id="textinput" name="street" type="text" placeholder="Enter your street" class="form-control input-md">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Building</label>
+                        <div class="col-md-6">
+                            <input id="textinput" name="building" type="text" placeholder="Enter your building nr" class="form-control input-md">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Flat</label>
+                        <div class="col-md-6">
+                            <input id="textinput" name="flat" type="text" placeholder="Enter your flat nr" class="form-control input-md">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Post code</label>
+                        <div class="col-md-6">
+                            <input id="textinput" name="postCode" type="text" placeholder="Enter your post code" class="form-control input-md">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">City</label>
+                        <div class="col-md-6">
+                            <input id="textinput" name="city" type="text" placeholder="Enter your city" class="form-control input-md">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Country</label>
+                        <div class="col-md-6">
+                            <input id="textinput" name="country" type="text" placeholder="Enter your country" class="form-control input-md">
                         </div>
                     </div>
                     
