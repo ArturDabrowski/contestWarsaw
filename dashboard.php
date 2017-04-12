@@ -53,7 +53,7 @@ require_once 'config/Config.php';
                </button>
                <ul class="dropdown-menu">
                    <?php
-                   $zapytanie="select * from user";
+                   $zapytanie="select distinct city from user";
                    $conn = new DbConnect();
                     $do_bazy_insert = $conn->db->query($zapytanie);
 
@@ -61,7 +61,7 @@ require_once 'config/Config.php';
                     while ($wiersz=$do_bazy_insert->fetch_object()){
                     $lp++;
             echo "
-                <li><a href=\"?action=$wiersz->city\" style=\"margin-right: 20px\">$wiersz->city</a></li>
+                <li><a href=\"?actionCity=$wiersz->city\" style=\"margin-right: 20px\">$wiersz->city</a></li>
                     ";
             }
                    ?>
@@ -75,7 +75,7 @@ require_once 'config/Config.php';
                </button>
                <ul class="dropdown-menu">
                    <?php
-                   $zapytanie="select * from user";
+                   $zapytanie="select distinct country from user";
                    $conn = new DbConnect();
                     $do_bazy_insert = $conn->db->query($zapytanie);
 
@@ -83,7 +83,7 @@ require_once 'config/Config.php';
                     while ($wiersz=$do_bazy_insert->fetch_object()){
                     $lp++;
             echo "
-                <li><a href=\"?action=$wiersz->country\" style=\"margin-right: 20px\">$wiersz->country</a></li>
+                <li><a href=\"?actionCountry=$wiersz->country\" style=\"margin-right: 20px\">$wiersz->country</a></li>
                     ";
             }
                    ?>
@@ -111,8 +111,8 @@ require_once 'config/Config.php';
                 <th>Building nr</th>
                 <th>Flat nr</th>
                 <th>Postcode</th>
-                <th>City <a href="?action=cityAsc" class="glyphicon glyphicon-chevron-up" id="male" style="margin-right: 20px"></a><a href="?action=cityDesc" class="glyphicon glyphicon-chevron-down" id="male" style="margin-right: 20px"></a></th>
-                <th>Country <a href="?action=countryAsc" class="glyphicon glyphicon-chevron-up" id="male" style="margin-right: 20px"></a><a href="?action=countryDesc" class="glyphicon glyphicon-chevron-down" id="male" style="margin-right: 20px"></a></th>
+                <th>City <a href="?actionCity=cityAsc" class="glyphicon glyphicon-chevron-up" id="male" style="margin-right: 20px"></a><a href="?actionCity=cityDesc" class="glyphicon glyphicon-chevron-down" id="male" style="margin-right: 20px"></a></th>
+                <th>Country <a href="?actionCountry=countryAsc" class="glyphicon glyphicon-chevron-up" id="male" style="margin-right: 20px"></a><a href="?actionCountry=countryDesc" class="glyphicon glyphicon-chevron-down" id="male" style="margin-right: 20px"></a></th>
                 <th>First question answer</th>
                 <th>Second question answer</th>
                 <th>Date of participation</th>
@@ -137,19 +137,12 @@ require_once 'config/Config.php';
  
             } elseif(isset($_GET['action']) && $_GET['action']=='goodAllAnswers'){
                 $zapytanie = "select * from `user` where `answerFirst` = '1,748,916' and `answerSecond` = '7'";
- 
-            } elseif(isset($_GET['action']) && $_GET['action']==$_GET['action']){
-                $city=$_GET['action'];
-                $zapytanie = "select * from `user` where `city`='$city'";
-                
-            } elseif(isset($_GET['action']) && $_GET['action']==$_GET['action']){
-                $country=$_GET['action'];
-                $zapytanie = "select * from `user` where `city`='$country'";
                 
             } else {
                 $zapytanie = "select * from `user`";
             }
-            if(isset($_GET['action']) && $_GET['action'] =='nameAsc'){
+            
+    if(isset($_GET['action']) && $_GET['action'] =='nameAsc'){
         $zapytanie .= " ORDER BY `name` ASC";
     }
     if(isset($_GET['action']) && $_GET['action'] =='nameDesc'){
@@ -176,20 +169,33 @@ require_once 'config/Config.php';
     if(isset($_GET['action']) && $_GET['action'] =='mailDesc'){
         $zapytanie .= " ORDER BY `email` DESC";
     }
-    //country
-    if(isset($_GET['action']) && $_GET['action'] =='countryAsc'){
-        $zapytanie .= " ORDER BY `country` ASC";
+    
+    if(isset($_GET['actionCity'])){
+        $city=$_GET['actionCity'];
+        $zapytanie = "select * from `user` where `city`='$city'";
+    } 
+    if(isset($_GET['actionCity']) && $_GET['actionCity'] =='cityAsc'){
+        $zapytanie = " select * from user ORDER BY `city` ASC";
+        
     }
-    if(isset($_GET['action']) && $_GET['action'] =='countryAsc'){
-        $zapytanie .= " ORDER BY `country` DESC";
+    if(isset($_GET['actionCity']) && $_GET['actionCity'] =='cityDesc'){
+        $zapytanie = "select * from user ORDER BY `city` DESC";
+    }
+    
+    if(isset($_GET['actionCountry'])){
+        $country=$_GET['actionCountry'];
+        $zapytanie = "select * from `user` where `country`='$country'";
+    }
+    //country
+    if(isset($_GET['actionCountry']) && $_GET['actionCountry'] =='countryAsc'){
+        $zapytanie = " select * from user where  ORDER BY `country` ASC";
+    }
+    if(isset($_GET['actionCountry']) && $_GET['actionCountry'] =='countryDesc'){
+        $zapytanie = " select * from user ORDER BY `country` DESC";
     }
     //city
-    if(isset($_GET['action']) && $_GET['action'] =='cityAsc'){
-        $zapytanie .= " ORDER BY `city` ASC";
-    }
-    if(isset($_GET['action']) && $_GET['action'] =='cityAsc'){
-        $zapytanie .= " ORDER BY `city` DESC";
-    }
+    
+    
             $conn = new DbConnect();
             $do_bazy_insert = $conn->db->query($zapytanie);
 
@@ -224,6 +230,8 @@ require_once 'config/Config.php';
             if($lp==0) {
           echo 'Brak rekordów.';
         }
+        
+        
 
             ?>
         </tbody>
