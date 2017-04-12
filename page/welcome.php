@@ -1,32 +1,34 @@
 <?php
-if(isset($_POST['sendButton'])){
-    if(!isset($_POST['code']) || empty($_POST['code'])){
-        header('Location: index.php');
-        exit();
-    }
-   else
-    {    
-        $codePost = htmlentities($_POST['code']);
-        $checkCode = new DbConnect();
-        $queryCode = "SELECT code, active FROM `codes` WHERE `code` = '$codePost' ";
-        $send = $checkCode->db->query($queryCode);
-        $result1 = $send->num_rows;
-        if($result1 == 1)
-        {
-            $result = $send->fetch_object();
-            if($result->active != 0)
-            {
-                header('Location:index.php?page=registration');// ZMIENIC NAZWE PLIKUa
+    session_start();
+//    if(!isset($_POST['code'])){
+//        header('Location: index.php');
+//        exit();
+//    }
+    if(isset($_POST['sendButton'])){
+        $code = htmlentities($_POST['code']);
+        $baza = new DbConnect();
+        $query = "SELECT * FROM codes WHERE code = '$code'";
+        $rezultat = $baza->db->query($query);
+        if($rezultat->num_rows == 1){
+            $row = $rezultat->fetch_assoc();
+            $_SESSION['code'] = $row['code'];
+            $query1 = "SELECT code FROM codes WHERE code = '$code' AND active = 0";
+            $res = $baza->db->query($query1);
+            if($res->num_rows == 0){
+                header('Location: index.php');
+            }
+            else{            
+                $aql = "UPDATE codes SET active = 1 WHERE code = '$code'";
+                $rezultat1 = $baza->db->query($aql);
+                header('Location: index.php?page=registration');
                 exit();
             }
-        }
-        else
-        {
-            header('Location:index.php');// ZMIENIC NAZWE PLIKU
-            exit();    
-        }
+        }else{
+            header('Location: index.php');
+            exit();
+        }    
     }
-}
+        
 ?>
 
 
@@ -47,6 +49,7 @@ if(isset($_POST['sendButton'])){
                         <input id="textinput" name="code" type="text" placeholder="Input your code" class="form-control input-md">
                            </div><div class="col-xs-offset-4 col-sm-offset-0" style="float: left">
                             <input style="height: 35px;" type="submit" name="sendButton" value="Submit">
+                            
                         </div>
                     </form>
                     </div>
@@ -118,3 +121,6 @@ if(isset($_POST['sendButton'])){
             </div>
         </div>
     </div>
+<?php
+    session_destroy();
+?>
