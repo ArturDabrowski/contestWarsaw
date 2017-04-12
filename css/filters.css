@@ -1,0 +1,39 @@
+body {
+    min-height: 100vh;
+    
+    padding: 50px;
+    background-color: lightgrey;
+}
+#container{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #29497F;
+    padding: 30px;
+    border-radius: 20px 20px 0px 0px;
+}
+
+#hehe {
+    height: 50px;
+    border-radius: 0px 0px 20px 20px;
+    background-color: #29497F;
+}
+form {
+    width: 100%;
+}
+#start {
+    float: left;
+    margin-right: 10px;
+}
+#sex {
+    float: right;
+    margin-right: 10px;
+}
+table{
+    margin-bottom: 0px !important;
+}
+
