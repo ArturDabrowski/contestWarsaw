@@ -13,28 +13,31 @@ require_once 'config/Config.php';
         <link rel="stylesheet" href="css/filters.css">
         <script src="js/jquery-3.1.1.js"></script>
         <script src="js/bootstrap.js"></script>
-        <title>Filters</title>
+        <title>dashboard</title>
     </head>
     <body>
         <div id="container">
         <div id="nav">
         <form method="get">
             
-           <a href="filters.php" class="btn btn-sm btn-primary mod" id="start" style="margin-right: 20px">Start</a>
+           <a href="dashboard.php" class="btn btn-sm btn-primary mod" id="start" style="margin-right: 20px">Start</a>
            
-            
+           
+           
            <div class="btn-group" id="sex">
-               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               
+               <button type="button" style="margin-right: 20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    Sex <span class="caret"></span>
                </button>
                <ul class="dropdown-menu">
                    <li><a href="?action=male"   style="margin-right: 20px">Male</a></li>
                    <li><a href="?action=female"   style="margin-right: 20px">Female</a></li>
                </ul>
-           </div>
+               </div>
+          
 
            <div class="btn-group" id="sex">
-               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <button type="button" style="margin-left: 20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    Answers <span class="caret"></span>
                </button>
                <ul class="dropdown-menu">
@@ -42,6 +45,54 @@ require_once 'config/Config.php';
                    <li><a href="?action=goodSecondAnswer"  id="male" style="margin-right: 20px">Good second answer</a></li>
                    <li><a href="?action=goodAllAnswers"  id="male" style="margin-right: 20px">Good all answers</a></li>
                </ul>
+               
+           </div>
+           <div class="btn-group" id="sex">
+               <button type="button" style="margin-left: 20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   City <span class="caret"></span>
+               </button>
+               <ul class="dropdown-menu">
+                   <?php
+                   $zapytanie="select * from user";
+                   $conn = new DbConnect();
+                    $do_bazy_insert = $conn->db->query($zapytanie);
+
+                    $lp = 0;
+                    while ($wiersz=$do_bazy_insert->fetch_object()){
+                    $lp++;
+            echo "
+                <li><a href=\"?action=$wiersz->city\" style=\"margin-right: 20px\">$wiersz->city</a></li>
+                    ";
+            }
+                   ?>
+
+               </ul>
+               
+           </div>
+           <div class="btn-group" id="sex">
+               <button type="button" style="margin-left: 20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Country <span class="caret"></span>
+               </button>
+               <ul class="dropdown-menu">
+                   <?php
+                   $zapytanie="select * from user";
+                   $conn = new DbConnect();
+                    $do_bazy_insert = $conn->db->query($zapytanie);
+
+                    $lp = 0;
+                    while ($wiersz=$do_bazy_insert->fetch_object()){
+                    $lp++;
+            echo "
+                <li><a href=\"?action=$wiersz->country\" style=\"margin-right: 20px\">$wiersz->country</a></li>
+                    ";
+            }
+                   ?>
+
+               </ul>
+               
+           </div>
+           <div class="btn-group" id="sex">
+           <p style="color:white"><b>Too much to handle ? Check out<br> grouping and sorting functions ;)</b></p>
            </div>
                 </div>
        </form>
@@ -56,7 +107,12 @@ require_once 'config/Config.php';
                 <th>Sex <a href="?action=sexAsc" class="glyphicon glyphicon-chevron-up" id="male" style="margin-right: 20px"></a><a href="?action=sexDesc" class="glyphicon glyphicon-chevron-down" id="male" style="margin-right: 20px"></a></th>
                 <th>E-mail <a href="?action=mailAsc" class="glyphicon glyphicon-chevron-up" id="male" style="margin-right: 20px"></a><a href="?action=mailDesc" class="glyphicon glyphicon-chevron-down" id="male" style="margin-right: 20px"></a></th>
                 <th>Phone number</th>
-                <th>Address</th>
+                <th>Street</th>
+                <th>Building nr</th>
+                <th>Flat nr</th>
+                <th>Postcode</th>
+                <th>City <a href="?action=cityAsc" class="glyphicon glyphicon-chevron-up" id="male" style="margin-right: 20px"></a><a href="?action=cityDesc" class="glyphicon glyphicon-chevron-down" id="male" style="margin-right: 20px"></a></th>
+                <th>Country <a href="?action=countryAsc" class="glyphicon glyphicon-chevron-up" id="male" style="margin-right: 20px"></a><a href="?action=countryDesc" class="glyphicon glyphicon-chevron-down" id="male" style="margin-right: 20px"></a></th>
                 <th>First question answer</th>
                 <th>Second question answer</th>
                 <th>Date of participation</th>
@@ -82,6 +138,14 @@ require_once 'config/Config.php';
             } elseif(isset($_GET['action']) && $_GET['action']=='goodAllAnswers'){
                 $zapytanie = "select * from `user` where `answerFirst` = '1,748,916' and `answerSecond` = '7'";
  
+            } elseif(isset($_GET['action']) && $_GET['action']==$_GET['action']){
+                $city=$_GET['action'];
+                $zapytanie = "select * from `user` where `city`='$city'";
+                
+            } elseif(isset($_GET['action']) && $_GET['action']==$_GET['action']){
+                $country=$_GET['action'];
+                $zapytanie = "select * from `user` where `city`='$country'";
+                
             } else {
                 $zapytanie = "select * from `user`";
             }
@@ -112,6 +176,20 @@ require_once 'config/Config.php';
     if(isset($_GET['action']) && $_GET['action'] =='mailDesc'){
         $zapytanie .= " ORDER BY `email` DESC";
     }
+    //country
+    if(isset($_GET['action']) && $_GET['action'] =='countryAsc'){
+        $zapytanie .= " ORDER BY `country` ASC";
+    }
+    if(isset($_GET['action']) && $_GET['action'] =='countryAsc'){
+        $zapytanie .= " ORDER BY `country` DESC";
+    }
+    //city
+    if(isset($_GET['action']) && $_GET['action'] =='cityAsc'){
+        $zapytanie .= " ORDER BY `city` ASC";
+    }
+    if(isset($_GET['action']) && $_GET['action'] =='cityAsc'){
+        $zapytanie .= " ORDER BY `city` DESC";
+    }
             $conn = new DbConnect();
             $do_bazy_insert = $conn->db->query($zapytanie);
 
@@ -129,7 +207,12 @@ require_once 'config/Config.php';
                 <td>$wiersz->sex</td>
                 <td>$wiersz->email</td>
                 <td>$wiersz->phone</td>
-                <td>$wiersz->address</td>
+                <td>$wiersz->street</td>
+                <td>$wiersz->buildingNr</td>
+                <td>$wiersz->flatNr</td>
+                <td>$wiersz->postCode</td>
+                <td>$wiersz->city</td>
+                <td>$wiersz->country</td>
                 <td>$wiersz->answerFirst</td>
                 <td>$wiersz->answerSecond</td>
                 <td>$wiersz->date</td>

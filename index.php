@@ -28,7 +28,7 @@
                 $email = htmlentities($_POST['email']);
                 $phone = htmlentities($_POST['phone']);
                 $prefix = ($_POST['prefix']);
-                $address = htmlentities($_POST['address']);
+                
                 $sex=$_POST['sex'];
                 $answerFirst = $_POST['answerFirst'];
                 //$questionSecond = $_POST['secondQuestion'];
@@ -38,17 +38,35 @@
                 $year=$_POST['year'];
                 $birthDate=$year."-".$month."-".$day;
                 $phoneNumber=$prefix." ".$phone;
+                $street=$_POST['street'];
+                $building=$_POST['building'];
+                $flat=$_POST['flat'];
+                $postCode=$_POST['postCode'];
+                $city=$_POST['city'];
+                $country=$_POST['country'];
                 
                 
             
                 $val=new Validate();
+                
                 $val->checkEmpty($name, 'name');
                 $val->checkEmpty($surname, 'surname');
-                $val->checkEmpty($address, 'adres');
+                $val->checkEmpty($street, 'street');
+                $val->checkEmpty($building, 'building');
+                $val->checkEmpty($flat, 'flat');
+                $val->checkEmpty($postCode, 'postCode');
+                $val->checkEmpty($city, 'city');
+                $val->checkEmpty($country, 'country');
+                
                 $val->minCharQuantity($name, 'name',25);
                 $val->minCharQuantity($surname, 'surname',40);
+                $val->minCharQuantity($street, 'street',40);
+                $val->minCharQuantity($city, 'city',40);
+                $val->minCharQuantity($country, 'country',35);
+                
                 $val->validateEmail($email, 'email');
                 $val->validatePhone($phone, 'phone');
+                $val->validatePostCode($postCode, 'postCode');
                 
                 $val->checkSelect($sex, 'sex');
                 $val->checkSelect($answerFirst, 'answerFirst');
@@ -65,7 +83,7 @@
                 
                 if($val->liczError==0) {
                  $conn = new DbConnect();
-                $query = "INSERT INTO user(name, surname, birthDate, sex, email, phone, address, answerFirst, answerSecond, date) VALUES('$name', '$surname', '$birthDate','$sex', '$email', '$phoneNumber', '$address', '$answerFirst','$answerSecond', '$date')";
+                $query = "INSERT INTO user(name, surname, birthDate, sex, email, phone, postCode, answerFirst, answerSecond, date) VALUES('$name', '$surname', '$birthDate','$sex', '$email', '$phoneNumber','$postCode', '$address', '$answerFirst','$answerSecond', '$date')";
 
                 if ($conn->db->query($query) === TRUE) {
                     echo "";
@@ -260,7 +278,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="textinput">Adress to send prize</label>
                         <div class="col-md-6">
-                            <input id="textinput" name="address" type="text" placeholder="Enter your adress" class="form-control input-md">
+                            <input id="textinput" name="postCode" type="text" placeholder="Enter postcode" class="form-control input-md">
                         </div>
                     </div>
                     
