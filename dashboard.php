@@ -21,7 +21,9 @@ require_once 'config/Config.php';
         <form method="get">
             
            <a href="dashboard.php" class="btn btn-sm btn-primary mod" id="start" style="margin-right: 20px">Start</a>
-    
+           
+           
+           
            <div class="btn-group" id="sex">
                
                <button type="button" style="margin-right: 20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -186,10 +188,10 @@ require_once 'config/Config.php';
     }
     //country
     if(isset($_GET['actionCountry']) && $_GET['actionCountry'] =='countryAsc'){
-        $zapytanie = "select * from user  ORDER BY `country` ASC";
+        $zapytanie = " select * from user where  ORDER BY `country` ASC";
     }
     if(isset($_GET['actionCountry']) && $_GET['actionCountry'] =='countryDesc'){
-        $zapytanie = "select * from user ORDER BY `country` DESC";
+        $zapytanie = " select * from user ORDER BY `country` DESC";
     }
     //city
     
@@ -228,6 +230,8 @@ require_once 'config/Config.php';
             if($lp==0) {
           echo 'Brak rekordów.';
         }
+        
+        
 
             ?>
         </tbody>
