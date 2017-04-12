@@ -88,6 +88,8 @@ require_once 'config/Config.php';
             if(isset($_GET['action']) && $_GET['action'] =='nameAsc'){
         $zapytanie .= " ORDER BY `name` ASC";
     }
+    
+    
     if(isset($_GET['action']) && $_GET['action'] =='nameDesc'){
         $zapytanie .= " ORDER BY `name` DESC";
     }
