@@ -24,4 +24,35 @@ body{
     border-radius: 20px;
     border: 1px solid black;
 }
+.error {
+    color: red;
+}
+/* Header */
+.head{
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+/* Center */
+.stomach {
+	background-color: white;
+    width: 100%;
+    max-height: 100vh;
+    margin-right: 0px;
+    padding-right: 0px;
+    text-align: justify;
+    margin-top: 20px;
+}
+/* Footer*/
+.foot {
+    margin-top: 20px;
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
 

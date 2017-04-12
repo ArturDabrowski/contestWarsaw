@@ -3,8 +3,8 @@
         function __construct() {
             session_start();
         }
-        function sessStart($login, $email){
-            $zapytanie = "SELECT `id_user` FROM `user` WHERE `name`='$login' AND `email`='$email'";
+        function sessStart($code){
+            $zapytanie = "SELECT id_code FROM code WHERE active = 1";
             $polacz = new DbConn();
             $wynik = $polacz->db->query($zapytanie);
             $wynik2 = $wynik->fetch_object();

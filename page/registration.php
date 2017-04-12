@@ -1,14 +1,3 @@
-<?php
-    if(isset($_POST['name']) && isset($_POST['email'])){
-        $name = htmlentities($_POST['name']);
-        $email = htmlentities($_POST['email']);
-        $sess = new MySession();
-        $sess->sessStart($name, $email);
-    }
-?>
-
-<a href="index.php?page=welcome">Welcome</a><br>
-<a href="index.php?page=thanks">thanks</a>
 <div id="txt" class="container-fluid front txt">
         <div class="row">
             <div class="col-xs-12 col-md-4">
@@ -91,7 +80,7 @@
             
           
         ?>
-        <form style="padding: 5px;" class="form-horizontal" method="post">
+                <form style="padding: 5px;" class="form-horizontal" method="post">
 
 
 

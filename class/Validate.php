@@ -59,6 +59,12 @@ class Validate {
         $this->AddError("Pole $pole musi byc zaznaczone.");
         $this->liczError++;
     }
+    function validatePostCode($ciag, $pole){
+        if(!preg_match('/^[0-9]{2}-?[0-9]{3}$/Du', trim($ciag))) {
+            $this->AddError("Postcode has to have specific format: XX-XXX.");
+            $this->liczError++;
+        }
+    }
     
    
     
