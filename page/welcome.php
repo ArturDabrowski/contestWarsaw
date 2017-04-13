@@ -8,11 +8,10 @@
         if($rezultat->num_rows == 1){
             $row = $rezultat->fetch_assoc();
             $_SESSION['code'] = $row['code'];
+            $_SESSION['id_code']=$row['id_code'];
             $query1 = "SELECT code FROM codes WHERE code = '$code' AND active = 0";
             $res = $baza->db->query($query1);
             if($res->num_rows == 1){
-                $aql = "UPDATE codes SET active = 1 WHERE code = '$code'";
-                $rezultat1 = $baza->db->query($aql);
                 header('Location: index.php?page=registration');
                 exit();
             }

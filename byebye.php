@@ -1,19 +1,19 @@
-<?php
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Warszawa-konkurs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
 
 
-    session_start();
-    if(!isset($_SESSION['code'])){
-        header('Location: index.php');
-        exit();
-    }
-     require_once 'config/Config.php';
-     $query = "SELECT * FROM user WHERE id_user = (SELECT MAX(id_user) FROM user)";
-     $baza=new DbConnect();
-     $rezultat = $baza->db->query($query);
-     $row=$rezultat->fetch_object();
-     
-?>
-<div id="txt1" class="container-fluid front txt">
+    <div id="txt1" class="container-fluid front txt">
         <div class="row">
             <div class="col-xs-12 col-sm-4">
             </div>
@@ -32,11 +32,11 @@
                        <h3>WARSAW CONTEST     <img height="40px" width="40px" src="img/ZNAK_PROMOCYJNY_FC_PL-01.png"></h3>
                            <div class="col-md-6 text">
                             <h4>Thanks for registration</h4>
-                            <p>Name: <span id="namee"><?php echo $row->name?></span></p>
-                            <p>Surname: <span id="surnamee"><?php echo $row->surname?></span></p>
-                            <p>Adres: <span id="adress"><?php echo "$row->street $row->buildingNr $row->flatNr $row->postCode $row->city $row->country"?></span></p>
-                            <p>Birth: <span id="birthh"><?php echo $row->birthDate?></span></p>
-                            <p>E-mail: <span id="emaill"><?php echo $row->email?></span></p>
+                            <p>Name: <span id="namee"></span></p>
+                            <p>Surname: <span id="surnamee"></span></p>
+                            <p>Adres: <span id="adress"></span></p>
+                            <p>Birth: <span id="birthh"></span></p>
+                            <p>E-mail: <span id="emaill"></span></p>
                         </div>
                     </div>  
                       <div class="form-group">
@@ -112,9 +112,8 @@
 
         </div>
     </div>
-    </div>
      
-
+</body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script>            
@@ -130,3 +129,5 @@
             });
         
     </script>
+
+</html>

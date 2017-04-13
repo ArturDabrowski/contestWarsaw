@@ -42,8 +42,6 @@
     
 $(function() {
     $('#Question2').hide();
-//    $('#Question3').hide();
-//    $('#Question4').hide();
     $('#Question').change(function() {
         if ($(this).is(":selected")) {
             $('#Question2').hide();
@@ -52,6 +50,28 @@ $(function() {
         }
     })
 
+    
+});
+    $(function() {
+    $('#Question3').hide();
+    $('#Question2').change(function() {
+        if ($(this).is(":selected")) {
+            $('#Question3').hide();
+        } else {
+            $('#Question3').show();
+        }
+    })
+    
+});
+    $(function() {
+    $('#Question4').hide();
+    $('#Question3').change(function() {
+        if ($(this).is(":selected")) {
+            $('#Question4').hide();
+        } else {
+            $('#Question4').show();
+        }
+    })
     
 });
    </script>
