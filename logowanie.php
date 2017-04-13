@@ -24,22 +24,21 @@ require_once 'config/Config.php';
         $walidacja->checkUsername($login,'login');
         $walidacja->minCharQuantity($login,'login',8);
         
-        if($walidacja->liczError == 0) {
-        session_start($username,$haslo);
-            $username = htmlentities($_POST['login']);
-            $haslo = htmlentities($_POST['haslo']);
-            $baza = new DbConnect();
-            $query = "SELECT * FROM admin WHERE username = '$username' AND password = '$haslo'";
-            $rezultat = $baza->db->query($query);
-            if($rezultat->num_rows == 1){
-                $_SESSION['identyfikator_sesji'] = session_id();
-                $_SESSION['login'] = $id_user->login;
-                $_SESSION['klient'] = $_SERVER['HTTP_USER_AGENT'];
-                $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
-        }
+//        if($walidacja->liczError == 0) {
+//        session_start($username,$haslo);
+//            $username = htmlentities($_POST['login']);
+//            $haslo = htmlentities($_POST['haslo']);
+//            $baza = new DbConnect();
+//            $query = "SELECT * FROM admin WHERE username = '$username' AND password = '$haslo'";
+//            $rezultat = $baza->db->query($query);
+//            if($rezultat->num_rows == 1){
+//                $_SESSION['identyfikator_sesji'] = session_id();
+//                $_SESSION['login'] = $id_user->login;
+//                $_SESSION['klient'] = $_SERVER['HTTP_USER_AGENT'];
+//                $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
+//        }
       
-        
-            
+
         $polacz = new DbConnect();
         $zapytanie = "SELECT `username`,`password` FROM `admin` WHERE `username`='$login' AND `password`='$haslo'";
         $wynik = $polacz->db->query($zapytanie);
@@ -53,7 +52,6 @@ require_once 'config/Config.php';
             exit();
             }
         }
-    }
     
     unset($walidacja);
   
