@@ -82,7 +82,10 @@
                     echo header('Location: index.php?page=byebye');
                 } else {
                     echo "Error: " . $query . "<br>" . $conn->db->error;
-                }
+                }                 
+                $code = $_SESSION['code'];
+                $sql = "UPDATE codes SET active = 1 WHERE code = '$code'";
+                $rezultat1 = $conn->db->query($sql);
                 
          
             $date= date('Y-m-d');
