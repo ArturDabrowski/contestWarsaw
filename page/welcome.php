@@ -1,23 +1,35 @@
 <?php
-if(isset($_GET['sendButton'])){
-    if(!isset($_GET['code']) || empty($_GET['code'])){
-        header('Location: index.php');
-        exit();
-    } else {
-        $code=$_GET['code'];
-        $zapytanie="select * from `codes` where active = 0";
-        $conn = new DbConnect();
-        $do_bazy_insert = $conn->db->query($zapytanie);
-        $wiersz=$do_bazy_insert->fetch_object();
-        if($code == $wiersz->code) {
-          $baza=new DbConnect();
-          $zapytanie="update `codes` set `active` = 1 where `code` = '$code'";
-          $wynik=$baza->db->query($zapytanie);
-          header("location:index.php?page=registration&action='$code'");
-        }
-}
-}
-
+    session_start();
+    if(isset($_POST['sendButton'])){
+        $code = htmlentities($_POST['code']);
+        $baza = new DbConnect();
+        $query = "SELECT * FROM codes WHERE code = '$code'";
+        $rezultat = $baza->db->query($query);
+        if($rezultat->num_rows == 1){
+            $row = $rezultat->fetch_assoc();
+            $_SESSION['code'] = $row['code'];
+            $query1 = "SELECT code FROM codes WHERE code = '$code' AND active = 0";
+            $res = $baza->db->query($query1);
+            if($res->num_rows == 1){
+                $aql = "UPDATE codes SET active = 1 WHERE code = '$code'";
+                $rezultat1 = $baza->db->query($aql);
+                header('Location: index.php?page=registration');
+                exit();
+            }
+            $query11 = "SELECT code FROM codes WHERE code = '$code' AND active = 1";
+            $res1 = $baza->db->query($query1);
+            if($res1->num_rows == 1){
+                //kod wykorzystany
+                header('Location: index.php');
+                exit();
+            }
+        }else{
+            //brakkodu w bazie
+            header('Location: index.php');
+            exit();
+        }    
+    }
+        
 ?>
 
 
@@ -33,11 +45,12 @@ if(isset($_GET['sendButton'])){
             <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat commodi distinctio repudiandae, quaerat expedita ullam natus ipsa debitis magni esse amet laborum voluptatibus vero a accusantium, perferendis facilis ipsam sunt minus et. Quisquam officiis, consectetur libero! Molestias sequi maiores ab autem soluta nulla eum iusto corporis nobis, totam harum odit numquam aspernatur, dolorem ducimus, repudiandae labore cupiditate dolore voluptatum! Atque culpa sint, tempore porro obcaecati quas veritatis accusantium quibusdam sed quae fugit dolorum, numquam dolores commodi rerum officiis suscipit. Recusandae in sint tempore consequuntur nulla vero dolore temporibus sit facere, ex suscipit, fuga explicabo officiis dicta </p>
                 <div class="form-group col-xs-12 col-sm-offset-2">
-                    <form method="get" action="index.php">
+                    <form method="POST" action="index.php">
                         <div  style="float: left;" class="col-md-8">
                         <input id="textinput" name="code" type="text" placeholder="Input your code" class="form-control input-md">
                            </div><div class="col-xs-offset-4 col-sm-offset-0" style="float: left">
                             <input style="height: 35px;" type="submit" name="sendButton" value="Submit">
+                            
                         </div>
                     </form>
                     </div>
@@ -109,3 +122,6 @@ if(isset($_GET['sendButton'])){
             </div>
         </div>
     </div>
+<?php
+    session_destroy();
+?>

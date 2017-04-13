@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['code'])){
+        header('Location: index.php');
+        exit();
+    }
+?>
+
 <div id="txt" class="container-fluid front txt">
         <div class="row">
             <div class="col-xs-12 col-md-4">
@@ -5,10 +13,6 @@
             <div class="col-xs-12 col-md-4">
             <?php
             require_once 'config/Config.php';
-            
-            if(!isset($_GET['action'])){
-                header('location:index.php');
-            }
             
             if(isset($_POST['sendButton'])){
                 $name = htmlentities($_POST['name']);
@@ -59,12 +63,10 @@
                 $val->checkSelect($sex, 'sex');
                 $val->checkSelect($answerFirst, 'answerFirst');
                 $val->checkSelect($answerSecond, 'answerSecond');
-
                 $val->checkSelect($day, 'day');
                 $val->checkSelect($month, 'month');
                 $val->checkSelect($year, 'year');
                 $val->checkSelect($prefix, 'prefix');
-
                 if(!isset($_POST['tick'])){
                     $val->isChecked('tick');
                 }
@@ -72,30 +74,32 @@
                 if($val->liczError==0) {
                  $conn = new DbConnect();
                 $query = "INSERT INTO user(name, surname, birthDate, sex, email, phone, street, buildingNr, flatNr, postCode, city, country, answerFirst, answerSecond, date) VALUES('$name', '$surname', '$birthDate','$sex', '$email', '$phoneNumber', '$street', '$building', '$flat', '$postCode', '$city', '$country', '$answerFirst','$answerSecond', '$date')";
-
                 if ($conn->db->query($query) === TRUE) {
-                    echo header('Location:index.php?page=byebye&action=byebye');
+                    echo header('Location: index.php?page=byebye');
                 } else {
                     echo "Error: " . $query . "<br>" . $conn->db->error;
                 }
-
                 
          
             $date= date('Y-m-d');
             $question1="Which answer is correct. How many people lives in Warsaw?";
             $question2="Which answer is correct. How many districts Warsaw has?";
+            $question3="Which answer is correct. First president of Warsaw?";
+            $question4="Which answer is correct. Actual president of Warsaw?";
             $correctAnswer1="1,748,916";
             $correctAnswer2="7";
+            $correctAnswer3="Ignacy Wyssogota Zakrzewski";
+            $correctAnswer4="Hanna Gronkiewicz Waltz";
             $tick='Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.';
             
-
-//            $mail=new SendMail('Warsaw Contest');
-//            $message="Name: $name<br><br> Surname: $surname<br><br> Birth date: $birthDate<br><br> Sex: $sex<br><br> "
-//                    . "Phone number: $phoneNumber<br><br> Address: $address<br><br> First question: $question1<br><br> "
-//                    . "Correct answer 1: $correctAnswer1<br><br><b> Your answer: $answerFirst</b><br><br> Second question: $question2<br><br> "
-//                    . "Correct answer 2: $correctAnswer2<br><br><b> Your answer: $answerSecond</b><br><br> Tick agreement: $tick<br><br> Date: $date";
-//            
-//            $mail->send($email, 'Thank You for registration in contest About Warsaw!',$message );
+            $mail=new SendMail('Warsaw Contest');
+            $message="Name: $name<br><br> Surname: $surname<br><br> Birth date: $birthDate<br><br> Sex: $sex<br><br> "
+                    . "Phone number: $phoneNumber<br><br> Street: $street<br><br> Building: $building<br><br> Flat: $flat<br><br> "
+                    . "Postcode: $postCode<br><br> City: $city<br><br> Country: $country<br><br> First question: $question1<br><br> "
+                    . "Correct answer 1: $correctAnswer1<br><br><b> Your answer: $answerFirst</b><br><br> Second question: $question2<br><br> "
+                    . "Correct answer 2: $correctAnswer2<br><br><b> Your answer: $answerSecond</b><br><br> Tick agreement: $tick<br><br> Date: $date";
+            
+            $mail->send($email, 'Thank You for registration in contest About Warsaw!',$message );
             }
         }
             
@@ -353,4 +357,4 @@
             </div>
 
         </div>
-    </div>
+</div>

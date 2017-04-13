@@ -1,8 +1,12 @@
 <?php
-require_once 'config/Config.php';
-if(!isset($_GET['action'])){
-                header('location:index.php');
-            }        
+
+
+    session_start();
+    if(!isset($_SESSION['code'])){
+        header('Location: index.php');
+        exit();
+    }
+     require_once 'config/Config.php';    
 ?>
 <div id="txt1" class="container-fluid front txt">
         <div class="row">
