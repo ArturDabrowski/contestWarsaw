@@ -5,8 +5,8 @@
     <title>Warszawa-konkurs</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -14,7 +14,7 @@
         <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 head">
-                <h1>Warsaw Contest <img height="70px" width="70px" src="img/syrenka.png"></h1>
+                <h1>Warsaw Contest <img height="70px" width="70px" src="img/syrenka.jpg"></h1>
             </div>
         </div>
     </div>
@@ -355,17 +355,53 @@
        <div class="container-fluid head">
         <div class="row">
             <div class="col-xs-12">
-                <a style="text-decoration: none; color: white" href="">
-                    <h3>Contact</h3>
-                </a>
+              <div class="span4 proj-div" data-toggle="modal" data-target="#GSCCModal" style="cursor:pointer">Contact</div>
+
+            <div id="GSCCModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                            <h4 class="modal-title" id="myModalLabel">Kontakt Urząd m.st. Warszawy</h4>
+                        </div>
+                        <div style="color: black;"  class="modal-body">
+                            Adres: plac Bankowy 3/5<br> 00-950 Warszawa<br> Godziny otwarcia: 08:00 - 16:00<br> mail: kontakt@umwarszawa.pl
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+         
+         
+            <div class="span4 proj-div" data-toggle="modal" data-target="#GSCCModal1" style="cursor:pointer">Rules</div>
+
+            <div id="GSCCModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                            
+                            <h4 style="color: black;" #000000 class="modal-title" id="myModalLabel" >Rules</h4>
+                          
+                        </div>
+                        <div style="color: black;"  class="modal-body">
+                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. In harum molestiae ratione vel laboriosam quo.<br>
+                           &sect;<br>
+                 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
                 <p>Copyright &copy; Urząd Miasta Warszawa</p>
             </div>
         </div>
     </div>
      
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="js/jquery-3.2.0.js"></script>
+<script src="js/bootstrap.js"></script>
 
 
 

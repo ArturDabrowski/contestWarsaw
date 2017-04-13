@@ -23,3 +23,10 @@ body{
 .text{
     text-align: center;
 }
+.head{
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
