@@ -10,18 +10,16 @@ class MySession  {
         $polacz = new DbConnect();
                 $wynik=$polacz->db->query($zapytanie);
                 $wynik1=$wynik->fetch_object();
-                
                 if($code == $wynik->code){
                     setcookie(time()+(60*60*24*7));
-
-                   $_SESSION['identyfikator_sesji']= session_id();
+                    $_SESSION['identyfikator_sesji']= session_id();
                     $_SESSION['klient']=$_SERVER['HTTP_USER_AGENT'];
                     $_SESSION['ip']=$_SERVER['REMOTE_ADDR'];
                     header('Location:index.php?page=registration');
-                    exit();
+                exit();
                 } else {
-                    header("Location:index.php?logowanie=no");
-                    exit();
+                header("Location:index.php?logowanie=no");
+                exit();
                 }
     }
     function sessVerify(){

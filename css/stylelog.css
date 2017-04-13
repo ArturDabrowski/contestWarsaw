@@ -1,0 +1,20 @@
+body{
+    width: 100%;
+    background-color: lightgray;
+    min-height: 100vh;
+}
+/* Strona główna */
+.front{
+    margin-top: 150px;
+    }
+#txt {
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+}
+.form-horizontal{
+    background-color: white;
+    min-height: 50vh;
+    border-radius: 20px;
+    border: 1px solid black;
+}

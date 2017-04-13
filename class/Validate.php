@@ -1,7 +1,6 @@
 <?php
 
 class Validate {
-    //wlasciwosc $error bedzie sluzyc do przechowywania komunikatu bledow
     private $error;
     public $liczError=0;
             
@@ -17,11 +16,15 @@ class Validate {
             echo '<div class="error" id="error">'.$this->error.'</div>';
         }
     }
-    
     function checkEmpty($ciag,$pole){
-        //trim wycina puste znaki z poczatku i konca ciagu, a empty sprawdza czy nie jest puste
         if(!(trim($ciag))){
             $this->AddError("Field $pole can't be empty.");
+            $this->liczError++;
+        }
+    }
+    function checkUsername($ciag, $pole){
+        if(!preg_match('/^[a-z].{0,7}$/', trim($ciag))) {
+            $this->AddError("Field $pole can contain only letters (max 8 letters).");
             $this->liczError++;
         }
     }
@@ -31,7 +34,6 @@ class Validate {
             $this->liczError++;
         }
     }
-       
     function validatePhone($ciag, $pole){
         if(!preg_match('/^[0-9].{0,11}$/', trim($ciag))) {
             $this->AddError("You can type max 12 digits.");
@@ -44,17 +46,12 @@ class Validate {
            $this->liczError++;
         } 
     }
-
-    
     function validateEmail($ciag, $pole){
         if(!filter_var($ciag, FILTER_VALIDATE_EMAIL)){
             $this->AddError("Field $pole doesn't have correct e-mail address");
             $this->liczError++;
-
         }
     }
-    
-    
     function isChecked($pole){
         $this->AddError("Pole $pole musi byc zaznaczone.");
         $this->liczError++;
@@ -65,7 +62,4 @@ class Validate {
             $this->liczError++;
         }
     }
-    
-   
-    
 }
