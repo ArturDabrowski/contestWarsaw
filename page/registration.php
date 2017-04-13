@@ -322,7 +322,7 @@
                     <div class="form-group" id="Question">
                         <label class="col-md-4 control-label" for="selectbasic">How many people lives in Warsaw?</label>
                         <div class="col-md-6">
-                            <select id="selectbasic" name="answerFirst" value="<?php if(isset($_POST['answerFirst'])){echo $_POST['answerFirst'];}?>" class="form-control" value="<?php if(isset($_POST['answerFirst'])){echo $_POST['answerFirst'];}?>">
+                            <select id="selectbasic" name="answerFirst" value="<?php if(isset($_POST['answerFirst'])){echo $_POST['answerFirst'];}?>" class="form-control">
                                   <option value="0"></option>
                                   <option value="931,321">931,321</option>
                                   <option value="1,748,916">1,748,916</option>
