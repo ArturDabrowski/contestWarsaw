@@ -131,7 +131,7 @@
                        <h3>TITLE CONTEST     <img height="60px" width="60px" src="img/ZNAK_PROMOCYJNY_FC_PL-01.png"></h3>
                         <label class="col-md-4 control-label" for="textinput">Name</label>
                         <div class="col-md-6">
-                            <input id="textinput" name="name" type="text" placeholder="Enter your name" class="form-control input-md">
+                            <input id="textinput" name="name" type="text" value="<?php if(isset($_POST['name'])){echo $_POST['name'];}?>" placeholder="Enter your name" class="form-control input-md">
                         </div>
                     </div>
 
@@ -139,7 +139,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="textinput">Surname</label>
                         <div class="col-md-6">
-                            <input id="textinput" name="surname" type="text" placeholder="Enter your surname" class="form-control input-md">
+                            <input id="textinput" name="surname" type="text" value="<?php if(isset($_POST['surname'])){echo $_POST['surname'];}?>" placeholder="Enter your surname" class="form-control input-md">
                         </div>
                     </div>
 
@@ -149,7 +149,7 @@
                     <div class="form-group row">
   <label for="example-tel-input" class="col-md-4 col-form-label">Day of your birth</label>
   <div class="col-md-6">
-    <select class="form-control"  id="country" name="day" class="input-xlarge">
+    <select class="form-control"  id="country" name="day" class="input-xlarge" value="<?php if(isset($_POST['day'])){echo $_POST['day'];}?>">
                             <option value="" selected="selected">Day</option>
                             <option value="01">1</option>
                             <option value="02">2</option>
@@ -190,7 +190,7 @@
 <div class="form-group row">
   <label for="example-tel-input" class="col-md-4 col-form-label">Month of your birth</label>
   <div class="col-md-6">
-    <select class="form-control"  id="country" name="month" class="input-xlarge">
+    <select class="form-control"  id="country" name="month" value="<?php if(isset($_POST['month'])){echo $_POST['month'];}?>" class="input-xlarge">
                             <option value="" selected="selected">Month</option>
                             <option value="01">January</option>
                             <option value="02">February</option>
@@ -214,7 +214,7 @@
 <div class="form-group row">
   <label for="example-tel-input" class="col-md-4 col-form-label">Year of your birth</label>
   <div class="col-md-6">
-    <select class="form-control"  id="country" name="year" class="input-xlarge">
+    <select class="form-control"  id="country" name="year" value="<?php if(isset($_POST['year'])){echo $_POST['year'];}?>"class="input-xlarge">
                             <option value="" selected="selected">Year</option>
                             <option value="1980">1980</option>
                             <option value="1981">1981</option>
@@ -245,7 +245,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="selectbasic">Sex</label>
                         <div class="col-md-6">
-                            <select id="selectbasic" name="sex" class="form-control">
+                            <select id="selectbasic" name="sex" value="<?php if(isset($_POST['sex'])){echo $_POST['sex'];}?>" class="form-control">
                                   <option value=""></option>
                                   <option value="Male">Male</option>
                                   <option value="Female">Female</option>
@@ -258,7 +258,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="textinput">Email</label>
                         <div class="col-md-6">
-                            <input id="textinput" name="email" type="text" placeholder="Enter your email" class="form-control input-md">
+                            <input id="textinput" name="email" value="<?php if(isset($_POST['email'])){echo $_POST['email'];}?>" type="text" placeholder="Enter your email" class="form-control input-md">
                         </div>
                     </div>
 
@@ -266,7 +266,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="textinput">Phone number</label>
                         <div  style="float: left; width: 100px;" class="col-md-6">
-                           <select style="width: 65px; height: 35px;" class="form-control input-sm"  id="country" name="prefix" class="input-sm">
+                           <select style="width: 65px; height: 35px;" class="form-control input-sm"  id="country" name="prefix" value="<?php if(isset($_POST['prefix'])){echo $_POST['prefix'];}?>" class="input-sm">
                             <option value="" selected="selected"></option>
                             <option value="+48">+48</option>
                             <option value="+47">+47</option>
@@ -275,7 +275,7 @@
                             <option value="+44">+44</option>
                             </select>
                            </div><div style="float: left">
-                            <input style="width: 105px" id="textinput" name="phone" type="text" placeholder="Phone" class="form-control input-md">
+                            <input style="width: 105px" id="textinput" name="phone" value="<?php if(isset($_POST['phone'])){echo $_POST['phone'];}?>" type="text" placeholder="Phone" class="form-control input-md">
                         </div>
                     </div>
 
@@ -283,37 +283,37 @@
                                         <div class="form-group">
                         <label class="col-md-4 control-label" for="textinput">Street</label>
                         <div class="col-md-6">
-                            <input id="textinput" name="street" type="text" placeholder="Enter your street" class="form-control input-md">
+                            <input id="textinput" name="street" value="<?php if(isset($_POST['street'])){echo $_POST['street'];}?>" type="text" placeholder="Enter your street" class="form-control input-md">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="textinput">Building</label>
                         <div class="col-md-6">
-                            <input id="textinput" name="building" type="text" placeholder="Enter your building nr" class="form-control input-md">
+                            <input id="textinput" name="building" value="<?php if(isset($_POST['building'])){echo $_POST['building'];}?>" type="text" placeholder="Enter your building nr" class="form-control input-md">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="textinput">Flat</label>
                         <div class="col-md-6">
-                            <input id="textinput" name="flat" type="text" placeholder="Enter your flat nr" class="form-control input-md">
+                            <input id="textinput" name="flat" value="<?php if(isset($_POST['flat'])){echo $_POST['flat'];}?>" type="text" placeholder="Enter your flat nr" class="form-control input-md">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="textinput">Post code</label>
                         <div class="col-md-6">
-                            <input id="textinput" name="postCode" type="text" placeholder="Enter your post code" class="form-control input-md">
+                            <input id="textinput" name="postCode" value="<?php if(isset($_POST['postCode'])){echo $_POST['postCode'];}?>" type="text" placeholder="Enter your post code" class="form-control input-md">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="textinput">City</label>
                         <div class="col-md-6">
-                            <input id="textinput" name="city" type="text" placeholder="Enter your city" class="form-control input-md">
+                            <input id="textinput" name="city" value="<?php if(isset($_POST['city'])){echo $_POST['city'];}?>" type="text" placeholder="Enter your city" class="form-control input-md">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="textinput">Country</label>
                         <div class="col-md-6">
-                            <input id="textinput" name="country" type="text" placeholder="Enter your country" class="form-control input-md">
+                            <input id="textinput" name="country" value="<?php if(isset($_POST['country'])){echo $_POST['country'];}?>" type="text" placeholder="Enter your country" class="form-control input-md">
                         </div>
                     </div>
                     
@@ -322,7 +322,7 @@
                     <div class="form-group" id="Question">
                         <label class="col-md-4 control-label" for="selectbasic">How many people lives in Warsaw?</label>
                         <div class="col-md-6">
-                            <select id="selectbasic" name="answerFirst" class="form-control">
+                            <select id="selectbasic" name="answerFirst" value="<?php if(isset($_POST['answerFirst'])){echo $_POST['answerFirst'];}?>" class="form-control" value="<?php if(isset($_POST['answerFirst'])){echo $_POST['answerFirst'];}?>">
                                   <option value="0"></option>
                                   <option value="931,321">931,321</option>
                                   <option value="1,748,916">1,748,916</option>
@@ -336,7 +336,7 @@
                     <div class="form-group" id="Question2">
                         <label class="col-md-4 control-label" for="selectbasic">How many districts Warsaw has?</label>
                         <div class="col-md-6">
-                            <select id="selectbasic" name="answerSecond" class="form-control">
+                            <select id="selectbasic" name="answerSecond" value="<?php if(isset($_POST['answerSecond'])){echo $_POST['answerSecond'];}?>" class="form-control">
                                   <option value="0"></option>
                                   <option value="3">3</option>
                                   <option value="5">5</option>
@@ -348,7 +348,7 @@
                     <div class="form-group" id="Question3">
                         <label class="col-md-4 control-label" for="selectbasic">How many districts Warsaw has?</label>
                         <div class="col-md-6">
-                            <select id="selectbasic" name="answerThird" class="form-control">
+                            <select id="selectbasic" name="answerThird" value="<?php if(isset($_POST['answerThird'])){echo $_POST['answerThird'];}?>" class="form-control">
                                   <option value="0"></option>
                                   <option value="Stefan Starzyński">Stefan Starzyński</option>
                                   <option value="Ignacy Wyssogota Zakrzewski">Ignacy Wyssogota Zakrzewski</option>
@@ -359,7 +359,7 @@
                     <div class="form-group" id="Question4">
                         <label class="col-md-4 control-label" for="selectbasic">How many districts Warsaw has?</label>
                         <div class="col-md-6">
-                            <select id="selectbasic" name="answerFourth" class="form-control">
+                            <select id="selectbasic" name="answerFourth" value="<?php if(isset($_POST['answerFourth'])){echo $_POST['answerFourth'];}?>"class="form-control">
                                   <option value="0"></option>
                                   <option value="Jarosław Kaczyński">Jarosław Kaczyński</option>
                                   <option value="Ryszard Petru">Ryszard Petru</option>
