@@ -11,8 +11,6 @@
             $query1 = "SELECT code FROM codes WHERE code = '$code' AND active = 0";
             $res = $baza->db->query($query1);
             if($res->num_rows == 1){
-                $aql = "UPDATE codes SET active = 1 WHERE code = '$code'";
-                $rezultat1 = $baza->db->query($aql);
                 header('Location: index.php?page=registration');
                 exit();
             }
