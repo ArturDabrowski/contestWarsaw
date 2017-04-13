@@ -39,7 +39,8 @@
                 $postCode=$_POST['postCode'];
                 $city=$_POST['city'];
                 $country=$_POST['country'];
-                $id_code=$_SESSION['id_code'];
+                $code=$_SESSION['code'];
+                
                 
                 
             
@@ -78,7 +79,7 @@
                 
                 if($val->liczError==0) {
                  $conn = new DbConnect();
-                $query = "INSERT INTO user(name, surname, birthDate, sex, email, phone, street, buildingNr, flatNr, postCode, city, country, answerFirst, answerSecond, answerThird, answerFourth, id_code, date) VALUES('$name', '$surname', '$birthDate','$sex', '$email', '$phoneNumber', '$street', '$building', '$flat', '$postCode', '$city', '$country', '$answerFirst','$answerSecond','$answerThird','$answerFourth','$id_code', '$date')";
+                $query = "INSERT INTO user(name, surname, birthDate, sex, email, phone, street, buildingNr, flatNr, postCode, city, country, answerFirst, answerSecond, answerThird, answerFourth, code, date) VALUES('$name', '$surname', '$birthDate','$sex', '$email', '$phoneNumber', '$street', '$building', '$flat', '$postCode', '$city', '$country', '$answerFirst','$answerSecond','$answerThird','$answerFourth','$code', '$date')";
                 if ($conn->db->query($query) === TRUE) {
                     echo header('Location: index.php?page=byebye');
                 } else {
@@ -392,6 +393,8 @@
 
         </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
     
 $(function() {
@@ -429,3 +432,4 @@ $(function() {
     
 });
    </script>
+   

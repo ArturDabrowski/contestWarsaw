@@ -8,7 +8,7 @@
         if($rezultat->num_rows == 1){
             $row = $rezultat->fetch_assoc();
             $_SESSION['code'] = $row['code'];
-            $_SESSION['id_code']=$row['id_code'];
+            
             $query1 = "SELECT code FROM codes WHERE code = '$code' AND active = 0";
             $res = $baza->db->query($query1);
             if($res->num_rows == 1){
@@ -18,17 +18,20 @@
             $query11 = "SELECT code FROM codes WHERE code = '$code' AND active = 1";
             $res1 = $baza->db->query($query1);
             if($res1->num_rows == 1){
-                //kod wykorzystany
                 header('Location: index.php');
+                
                 exit();
+ 
             }
+            
         }else{
             //brakkodu w bazie
             header('Location: index.php');
             exit();
         }    
     }
-        
+//       if(isset($_GET['action']) && $_GET['action']=='used'){
+//            echo "Sorry, this code has already been used.";  
 ?>
 
 

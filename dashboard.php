@@ -44,6 +44,8 @@ require_once 'config/Config.php';
                <ul class="dropdown-menu">
                    <li><a href="?action=goodFirstAnswer" id="male" style="margin-right: 20px">Good first answer</a></li>
                    <li><a href="?action=goodSecondAnswer"  id="male" style="margin-right: 20px">Good second answer</a></li>
+                   <li><a href="?action=goodThirdAnswer" id="male" style="margin-right: 20px">Good third answer</a></li>
+                   <li><a href="?action=goodFourthAnswer"  id="male" style="margin-right: 20px">Good fourth answer</a></li>
                    <li><a href="?action=goodAllAnswers"  id="male" style="margin-right: 20px">Good all answers</a></li>
                </ul>
            </div>
@@ -136,8 +138,14 @@ require_once 'config/Config.php';
             } elseif(isset($_GET['action']) && $_GET['action']=='goodSecondAnswer'){
                 $zapytanie = "select * from `user` where `answerSecond` = '7'";
  
+            } elseif(isset($_GET['action']) && $_GET['action']=='goodThirdAnswer'){
+                $zapytanie = "select * from `user` where `answerThird` = 'Ignacy Wyssogota Zakrzewski'";
+ 
+            } elseif(isset($_GET['action']) && $_GET['action']=='goodFourthAnswer'){
+                $zapytanie = "select * from `user` where `answerFourth` = 'Hanna Gronkiewicz Waltz'";
+ 
             } elseif(isset($_GET['action']) && $_GET['action']=='goodAllAnswers'){
-                $zapytanie = "select * from `user` where `answerFirst` = '1,748,916' and `answerSecond` = '7'";
+                $zapytanie = "select * from `user` where `answerFirst` = '1,748,916' and `answerSecond` = '7' and `answerThird` = 'Ignacy Wyssogota Zakrzewski' and `answerFourth` = 'Hanna Gronkiewicz Waltz'";
                 
             } else {
                 $zapytanie = "select * from `user`";
@@ -208,7 +216,7 @@ require_once 'config/Config.php';
             echo "
                 
             <tr class>
-                <td>$wiersz->id_code</td>
+                <td>$wiersz->code</td>
                 <td>$wiersz->name</td>
                 <td>$wiersz->surname</td>
                 <td>$wiersz->birthDate</td>
