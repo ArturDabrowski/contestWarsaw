@@ -1,10 +1,5 @@
 <?php
 require_once 'config/Config.php';
-session_start();
-    if(!isset($_SESSION['login'])){
-        header('Location: logowanie.php');
-        exit();
-    }
 ?>
 <html>
 <head>
