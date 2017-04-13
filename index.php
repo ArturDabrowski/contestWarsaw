@@ -11,7 +11,13 @@
 </head>
 
 <body>
-
+        <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 head">
+                <h1>Warsaw Contest <img height="70px" width="70px" src="img/syrenka.png"></h1>
+            </div>
+        </div>
+    </div>
 
     <div id="txt" class="container-fluid front txt">
         <div class="row">
@@ -115,7 +121,6 @@
                     <!-- Text input-->
                     
                     <div class="form-group">
-                       <h3>TITLE CONTEST     <img height="40px" width="40px" src="img/ZNAK_PROMOCYJNY_FC_PL-01.png"></h3>
                         <label class="col-md-4 control-label" for="textinput">Name</label>
                         <div class="col-md-6">
                             <input id="textinput" name="name" type="text" placeholder="Enter your name" class="form-control input-md">
@@ -334,11 +339,7 @@
                             <input type="submit" name="sendButton"  value="Send email">
                         </div>
                          <div class="col-md-6 col-md-offset-3">
-                <a style="text-decoration: none; color: black" href=""><h2>Regulations</h2></a><h2>Contact</h2>
-                <a href="tel:+191 15">Call</a><br>
-               <a href="mailto:um@warszawa.pl">Send an Email</a>
-              <p>Copyright &copy; Urząd Miasta Warszawa</p>
-                
+                <a style="text-decoration: none; color: black" href=""><h2>Regulations</h2></a>               
             </div>
                    <div class="container-fluid col-xs-12"><?php unset($val);  ?></php></div>
                     </div>
@@ -351,26 +352,22 @@
 
         </div>
     </div>
+       <div class="container-fluid head">
+        <div class="row">
+            <div class="col-xs-12">
+                <a style="text-decoration: none; color: white" href="">
+                    <h3>Contact</h3>
+                </a>
+                <p>Copyright &copy; Urząd Miasta Warszawa</p>
+            </div>
+        </div>
+    </div>
      
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script>
-    $('body').scrollspy({
-        target: ".navbar",
-        offset: 100
-    });
-    $("nav li a").on('click', function(event) {
-        var margin = $(this).data('margin') || 0;
-        var address = $(this).attr('href');
-        if (!address) return;
-        event.preventDefault();
-        $('html, body').animate({
-            scrollTop: $(address).offset().top - margin
-        }, 800);
-    });
-</script>
+
 
 <script>
     
