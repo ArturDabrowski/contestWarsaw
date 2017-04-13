@@ -22,10 +22,11 @@ require_once 'config/Config.php';
             
            <a href="dashboard.php" class="btn btn-sm btn-primary mod" id="start" style="margin-right: 20px">Start</a>
            
-           
+           <div class="btn-group" id="sex">
+              <a href="dashboard.php?action=logout" class="btn btn-sm btn-danger mod" id="logout" name="logout" style="margin-right: 20px">Logout</a>
+            </div>
            
            <div class="btn-group" id="sex">
-               
                <button type="button" style="margin-right: 20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    Sex <span class="caret"></span>
                </button>
@@ -33,7 +34,7 @@ require_once 'config/Config.php';
                    <li><a href="?action=male"   style="margin-right: 20px">Male</a></li>
                    <li><a href="?action=female"   style="margin-right: 20px">Female</a></li>
                </ul>
-               </div>
+           </div>
           
 
            <div class="btn-group" id="sex">
@@ -45,7 +46,6 @@ require_once 'config/Config.php';
                    <li><a href="?action=goodSecondAnswer"  id="male" style="margin-right: 20px">Good second answer</a></li>
                    <li><a href="?action=goodAllAnswers"  id="male" style="margin-right: 20px">Good all answers</a></li>
                </ul>
-               
            </div>
            <div class="btn-group" id="sex">
                <button type="button" style="margin-left: 20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -101,6 +101,7 @@ require_once 'config/Config.php';
         <table class="table table-striped">
         <thead>
             <tr>
+                <th>Code</th>
                 <th>Name <a href="?action=nameAsc" class="glyphicon glyphicon-chevron-up" id="male" style="margin-right: 20px"></a><a href="?action=nameDesc" class="glyphicon glyphicon-chevron-down" id="male" style="margin-right: 20px"></a></th>
                 <th>Surname <a href="?action=surnameAsc" class="glyphicon glyphicon-chevron-up" id="male" style="margin-right: 20px"></a><a href="?action=surnameDesc" class="glyphicon glyphicon-chevron-down" id="male" style="margin-right: 20px"></a></th>
                 <th>Date of birth</th>
@@ -207,6 +208,7 @@ require_once 'config/Config.php';
             echo "
                 
             <tr class>
+                <td>$wiersz->id_code</td>
                 <td>$wiersz->name</td>
                 <td>$wiersz->surname</td>
                 <td>$wiersz->birthDate</td>

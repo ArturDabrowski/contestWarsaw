@@ -39,6 +39,7 @@
                 $postCode=$_POST['postCode'];
                 $city=$_POST['city'];
                 $country=$_POST['country'];
+                $id_code=$_SESSION['id_code'];
                 
                 
             
@@ -77,7 +78,7 @@
                 
                 if($val->liczError==0) {
                  $conn = new DbConnect();
-                $query = "INSERT INTO user(name, surname, birthDate, sex, email, phone, street, buildingNr, flatNr, postCode, city, country, answerFirst, answerSecond, date) VALUES('$name', '$surname', '$birthDate','$sex', '$email', '$phoneNumber', '$street', '$building', '$flat', '$postCode', '$city', '$country', '$answerFirst','$answerSecond', '$date')";
+                $query = "INSERT INTO user(name, surname, birthDate, sex, email, phone, street, buildingNr, flatNr, postCode, city, country, answerFirst, answerSecond, answerThird, answerFourth, id_code, date) VALUES('$name', '$surname', '$birthDate','$sex', '$email', '$phoneNumber', '$street', '$building', '$flat', '$postCode', '$city', '$country', '$answerFirst','$answerSecond','$answerThird','$answerFourth','$id_code', '$date')";
                 if ($conn->db->query($query) === TRUE) {
                     echo header('Location: index.php?page=byebye');
                 } else {
