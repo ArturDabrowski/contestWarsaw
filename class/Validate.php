@@ -45,7 +45,6 @@ class Validate {
         } 
     }
 
-    
     function validateEmail($ciag, $pole){
         if(!filter_var($ciag, FILTER_VALIDATE_EMAIL)){
             $this->AddError("Field $pole doesn't have correct e-mail address");
@@ -53,8 +52,7 @@ class Validate {
 
         }
     }
-    
-    
+
     function isChecked($pole){
         $this->AddError("Pole $pole musi byc zaznaczone.");
         $this->liczError++;
@@ -62,6 +60,12 @@ class Validate {
     function validatePostCode($ciag, $pole){
         if(!preg_match('/^[0-9]{2}-?[0-9]{3}$/Du', trim($ciag))) {
             $this->AddError("Postcode has to have specific format: XX-XXX.");
+            $this->liczError++;
+        }
+    }
+    function checkUsername($ciag, $pole){
+        if(!preg_match('/^[a-z].{0,7}$/', trim($ciag))) {
+            $this->AddError("Field $pole can contain only letters (max 8 letters).");
             $this->liczError++;
         }
     }

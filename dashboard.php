@@ -1,4 +1,11 @@
 <?php
+ob_start();
+session_start();
+
+    if(!isset($_SESSION['login'])){
+        header('Location: logowanie.php');
+        exit();
+    }
 require_once 'config/Config.php';
 ?>    
 
@@ -241,8 +248,15 @@ require_once 'config/Config.php';
           echo 'Brak rekordów.';
         }
         
+        if(isset($_GET['action']) && $_GET['action'] == 'logout') {
+            $_SESSION[]=array();
+            session_destroy();
+            header('location: logowanie.php');
+            exit();
+            
+        }
         
-
+        ob_flush();
             ?>
         </tbody>
         </table>

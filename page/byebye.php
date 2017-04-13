@@ -1,4 +1,5 @@
-<?php
+
+    <?php
 
 
     session_start();
@@ -13,7 +14,14 @@
      $row=$rezultat->fetch_object();
      
 ?>
-<div id="txt1" class="container-fluid front txt">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 head">
+                <h1>Warsaw Contest <img height="70px" width="70px" src="img/syrenka.jpg"></h1>
+            </div>
+        </div>
+    </div>
+    <div id="txt1" class="container-fluid front txt">
         <div class="row">
             <div class="col-xs-12 col-sm-4">
             </div>
@@ -28,10 +36,11 @@
 
                     <!-- Text input-->
                     
-                    <div class="form-group">
-                       <h3>WARSAW CONTEST     <img height="40px" width="40px" src="img/ZNAK_PROMOCYJNY_FC_PL-01.png"></h3>
-                           <div class="col-md-6 text">
-                            <h4>Thanks for registration</h4>
+                    <div style="margin-top:50px;" class="form-group">
+                       
+                           <div class="col-md-6 col-md-offset-3 text">
+                            <h3>Thanks for registration</h3></div>
+                            <div class="col-xs-4 col-md-6" style="text-align: left; margin-left: 5px;">
                             <p>Name: <span id="namee"><?php echo $row->name?></span></p>
                             <p>Surname: <span id="surnamee"><?php echo $row->surname?></span></p>
                             <p>Adres: <span id="adress"><?php echo "$row->street $row->buildingNr $row->flatNr $row->postCode $row->city $row->country"?></span></p>
@@ -40,7 +49,7 @@
                         </div>
                     </div>  
                       <div class="form-group">
-                       <h4>Information about register we send on your e-mail</h4>
+                          <h4>Information about register<br> we send on your e-mail</h4>
                       
                     </div>
                       <div class="form-group">
@@ -50,7 +59,7 @@
                     
                     <div class="row">
                         
-                        <div class="col-xs-6 col-md-3">
+                        <div class="col-xs-4 col-md-4">
                             
                             <span class="thumbnail">
                                 
@@ -60,7 +69,7 @@
                             
                         </div>
                         
-                        <div class="col-xs-6 col-md-3">
+                        <div class="col-xs-4 col-md-4">
                             
                             <span class="thumbnail">
                                 
@@ -70,11 +79,11 @@
                             
                         </div>
                         
-                        <div class="col-xs-6 col-md-3">
+                        <div class="col-xs-4 col-md-4">
                             
                             <span class="thumbnail">
                                 
-                                <img src="img/pexels3.jpg">
+                                <img src="img/pexels4.jpg">
                             </span>
                         </div>      
                     </div>   
@@ -90,20 +99,7 @@
 </div>
                       
                     </div>
-
-
-                    <!-- Button -->
-                    <div class="form-group">
-                      
-                         <div class="col-md-6 col-md-offset-3">
-                <h4>Contact</h4>
-                
-               <a href="mailto:um@warszawa.pl">Send an Email</a>
-              <p>Copyright &copy; Urząd Miasta Warszawa</p>
-                
-            </div>
-                   
-                  </div>  
+        
                 </form>
        
             
@@ -113,10 +109,57 @@
         </div>
     </div>
     </div>
-     
+       <div class="container-fluid head">
+        <div class="row">
+            <div class="col-xs-12">
+              
+            <div class="span4 proj-div" data-toggle="modal" data-target="#GSCCModal" style="cursor:pointer">Contact</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+            <div id="GSCCModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                            <h4 class="modal-title" id="myModalLabel">Kontakt Urząd m.st. Warszawy</h4>
+                        </div>
+                        <div style="color: black;"  class="modal-body">
+                            Adres: plac Bankowy 3/5<br> 00-950 Warszawa<br> Godziny otwarcia: 08:00 - 16:00<br> mail: kontakt@umwarszawa.pl
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+         
+         
+            <div class="span4 proj-div" data-toggle="modal" data-target="#GSCCModal1" style="cursor:pointer">Rules</div>
+
+            <div id="GSCCModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                            
+                            <h4 style="color: black;" class="modal-title" id="myModalLabel" >Rules</h4>
+                          
+                        </div>
+                        <div style="color: black;"  class="modal-body">
+                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. In harum molestiae ratione vel laboriosam quo.<br>
+                           &sect;<br>
+                 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+
+                <p>Copyright &copy; Urząd Miasta Warszawa</p>
+           
+        </div>
+    </div>
+ <script src="js/jquery-3.2.0.js"></script>
+<script src="js/bootstrap.js"></script>
     <script>            
             
             //$('span.thumbnail > img') - do wszystkich span o klasie thumbnail będącego bezpośrednio powiązanym z img
@@ -129,4 +172,4 @@
                $('#modal').modal('toggle');
             });
         
-    </script>
+    </script> 
