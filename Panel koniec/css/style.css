@@ -1,0 +1,25 @@
+body{
+    width: 100%;
+/*    margin-top: 50px;*/
+    position: relative;
+}
+/* Strona główna */
+.front{
+    background: url('../img/pexels3.jpg') center center no-repeat scroll;
+   min-height: 100vh;
+    overflow-x: hidden;
+    }
+#txt1 {
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+}
+.form-horizontal{
+    background-color: white;
+    min-height: 100vh;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+.text{
+    text-align: center;
+}
