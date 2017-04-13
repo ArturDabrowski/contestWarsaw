@@ -8,6 +8,7 @@ body {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
+    position: absolute;
 }
 #nav {
     display: flex;
@@ -35,6 +36,8 @@ form {
 }
 table{
     margin-bottom: 0px !important;
+    width:95%;
+    position: relative;
 }
 
 
