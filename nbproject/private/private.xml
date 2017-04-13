@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/contestWarsaw/config/Switch.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsaw/page/thanks.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsaw/index.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsaw/config/Config.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsaw/page/welcome.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsaw/class/MySession.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsaw/page/registration.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsaw/byebye.php</file>
+        </group>
     </open-files>
 </project-private>

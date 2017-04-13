@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['code'])){
+        header('Location: index.php');
+        exit();
+    }
+?>
+
 <div id="txt" class="container-fluid front txt">
         <div class="row">
             <div class="col-xs-12 col-md-4">
