@@ -3,14 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/contestWarsaw/config/Switch.php</file>
-            <file>file:/C:/xampp/htdocs/contestWarsaw/page/thanks.php</file>
-            <file>file:/C:/xampp/htdocs/contestWarsaw/index.php</file>
-            <file>file:/C:/xampp/htdocs/contestWarsaw/config/Config.php</file>
-            <file>file:/C:/xampp/htdocs/contestWarsaw/page/welcome.php</file>
-            <file>file:/C:/xampp/htdocs/contestWarsaw/class/MySession.php</file>
-            <file>file:/C:/xampp/htdocs/contestWarsaw/page/registration.php</file>
-            <file>file:/C:/xampp/htdocs/contestWarsaw/byebye.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsawMarcin/dashboard.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsawMarcin/page/welcome.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsawMarcin/css/style.css</file>
+            <file>file:/C:/xampp/htdocs/contestWarsawMarcin/page/byebye.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsawMarcin/zmiana.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsawMarcin/logowanie.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsawMarcin/index.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsawMarcin/class/Validate.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsawMarcin/config/Switch.php</file>
+            <file>file:/C:/xampp/htdocs/contestWarsawMarcin/page/registration.php</file>
         </group>
     </open-files>
 </project-private>

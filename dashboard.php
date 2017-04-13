@@ -125,6 +125,8 @@ require_once 'config/Config.php';
                 <th>Country <a href="?actionCountry=countryAsc" class="glyphicon glyphicon-chevron-up" id="male" style="margin-right: 20px"></a><a href="?actionCountry=countryDesc" class="glyphicon glyphicon-chevron-down" id="male" style="margin-right: 20px"></a></th>
                 <th>First question answer</th>
                 <th>Second question answer</th>
+                <th>Third question answer</th>
+                <th>Fourth question answer</th>
                 <th>Date of participation</th>
             </tr>
         </thead>
@@ -238,6 +240,8 @@ require_once 'config/Config.php';
                 <td>$wiersz->country</td>
                 <td>$wiersz->answerFirst</td>
                 <td>$wiersz->answerSecond</td>
+                    <td>$wiersz->answerThird</td>
+                        <td>$wiersz->answerFourth</td>
                 <td>$wiersz->date</td>
                 
             </tr>
