@@ -1,9 +1,5 @@
 <?php
     session_start();
-//    if(!isset($_POST['code'])){
-//        header('Location: index.php');
-//        exit();
-//    }
     if(isset($_POST['sendButton'])){
         $code = htmlentities($_POST['code']);
         $baza = new DbConnect();
@@ -14,16 +10,21 @@
             $_SESSION['code'] = $row['code'];
             $query1 = "SELECT code FROM codes WHERE code = '$code' AND active = 0";
             $res = $baza->db->query($query1);
-            if($res->num_rows == 0){
-                header('Location: index.php');
-            }
-            else{            
+            if($res->num_rows == 1){
                 $aql = "UPDATE codes SET active = 1 WHERE code = '$code'";
                 $rezultat1 = $baza->db->query($aql);
                 header('Location: index.php?page=registration');
                 exit();
             }
+            $query11 = "SELECT code FROM codes WHERE code = '$code' AND active = 1";
+            $res1 = $baza->db->query($query1);
+            if($res1->num_rows == 1){
+                //kod wykorzystany
+                header('Location: index.php');
+                exit();
+            }
         }else{
+            //brakkodu w bazie
             header('Location: index.php');
             exit();
         }    
