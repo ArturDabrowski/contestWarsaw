@@ -114,16 +114,51 @@
 
     </div>
 
-    <div style="clear: both;" class="container-fluid foot">
+    <div class="container-fluid head">
         <div class="row">
             <div class="col-xs-12">
-                <a style="text-decoration: none; color: white" href="">
-                    <h3>Contact</h3>
-                </a>
+              <div class="span4 proj-div" data-toggle="modal" data-target="#GSCCModal" style="cursor:pointer">Contact</div>
+
+            <div id="GSCCModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                            <h4 class="modal-title" id="myModalLabel">Kontakt Urząd m.st. Warszawy</h4>
+                        </div>
+                        <div style="color: black;"  class="modal-body">
+                            Adres: plac Bankowy 3/5<br> 00-950 Warszawa<br> Godziny otwarcia: 08:00 - 16:00<br> mail: kontakt@umwarszawa.pl
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+         
+         
+            <div class="span4 proj-div" data-toggle="modal" data-target="#GSCCModal1" style="cursor:pointer">Rules</div>
+
+            <div id="GSCCModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                            
+                            <h4 style="color: black;"  class="modal-title" id="myModalLabel" >Rules</h4>
+                          
+                        </div>
+                        <div style="color: black;"  class="modal-body">
+                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. In harum molestiae ratione vel laboriosam quo.<br>
+                           &sect;<br>
+                 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
                 <p>Copyright &copy; Urząd Miasta Warszawa</p>
             </div>
         </div>
-    </div>
 <?php
     session_destroy();
 ?>

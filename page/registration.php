@@ -130,6 +130,12 @@
 
                     <!-- Text input-->
                     <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Name</label>
+                        <div class="col-md-6">
+                            <input id="textinput" name="name" type="text" placeholder="Enter your name" class="form-control input-md">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-md-4 control-label" for="textinput">Surname</label>
                         <div class="col-md-6">
                             <input id="textinput" name="surname" type="text" placeholder="Enter your surname" class="form-control input-md">
@@ -424,7 +430,7 @@
                 <p>Copyright &copy; Urząd Miasta Warszawa</p>
             </div>
         </div>
-    </div>
+    
      
 </body>
 <script src="js/jquery-3.2.0.js"></script>
