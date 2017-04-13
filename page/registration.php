@@ -72,14 +72,16 @@
                 }
                 
                 if($val->liczError==0) {
-                 $conn = new DbConnect();
+                $conn = new DbConnect();
                 $query = "INSERT INTO user(name, surname, birthDate, sex, email, phone, street, buildingNr, flatNr, postCode, city, country, answerFirst, answerSecond, date) VALUES('$name', '$surname', '$birthDate','$sex', '$email', '$phoneNumber', '$street', '$building', '$flat', '$postCode', '$city', '$country', '$answerFirst','$answerSecond', '$date')";
                 if ($conn->db->query($query) === TRUE) {
                     echo header('Location: index.php?page=byebye');
                 } else {
                     echo "Error: " . $query . "<br>" . $conn->db->error;
                 }
-                
+                $code = $_SESSION['code'];
+                $sql = "UPDATE codes SET active = 1 WHERE code = '$code'";
+                $rezultat1 = $conn->db->query($sql);
          
             $date= date('Y-m-d');
             $question1="Which answer is correct. How many people lives in Warsaw?";
@@ -327,7 +329,7 @@
                             </select>
                         </div>
                     </div>
-                    <input type="checkbox" name="tick"> Tick Agreement
+                    <input type="checkbox" name="tick"> <a href="agreement.php"> Tick Agreement</a>
 
                     <!-- Button -->
                     <div class="form-group">
