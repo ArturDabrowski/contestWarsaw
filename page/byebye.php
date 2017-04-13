@@ -6,7 +6,12 @@
         header('Location: index.php');
         exit();
     }
-     require_once 'config/Config.php';    
+     require_once 'config/Config.php';
+     $query = "SELECT * FROM user WHERE id_user = (SELECT MAX(id_user) FROM user)";
+     $baza=new DbConnect();
+     $rezultat = $baza->db->query($query);
+     $row=$rezultat->fetch_object();
+     
 ?>
 <div id="txt1" class="container-fluid front txt">
         <div class="row">
@@ -27,11 +32,11 @@
                        <h3>WARSAW CONTEST     <img height="40px" width="40px" src="img/ZNAK_PROMOCYJNY_FC_PL-01.png"></h3>
                            <div class="col-md-6 text">
                             <h4>Thanks for registration</h4>
-                            <p>Name: <span id="namee"></span></p>
-                            <p>Surname: <span id="surnamee"></span></p>
-                            <p>Adres: <span id="adress"></span></p>
-                            <p>Birth: <span id="birthh"></span></p>
-                            <p>E-mail: <span id="emaill"></span></p>
+                            <p>Name: <span id="namee"><?php echo $row->name?></span></p>
+                            <p>Surname: <span id="surnamee"><?php echo $row->surname?></span></p>
+                            <p>Adres: <span id="adress"><?php echo "$row->street $row->buildingNr $row->flatNr $row->postCode $row->city $row->country"?></span></p>
+                            <p>Birth: <span id="birthh"><?php echo $row->birthDate?></span></p>
+                            <p>E-mail: <span id="emaill"><?php echo $row->email?></span></p>
                         </div>
                     </div>  
                       <div class="form-group">

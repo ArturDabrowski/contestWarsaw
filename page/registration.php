@@ -26,6 +26,8 @@
                 $answerFirst = $_POST['answerFirst'];
                 //$questionSecond = $_POST['secondQuestion'];
                 $answerSecond = $_POST['answerSecond'];
+                $answerThird = $_POST['answerThird'];
+                $answerFourth = $_POST['answerFourth'];
                 $day=$_POST['day'];
                 $month=$_POST['month'];
                 $year=$_POST['year'];
@@ -63,6 +65,8 @@
                 $val->checkSelect($sex, 'sex');
                 $val->checkSelect($answerFirst, 'answerFirst');
                 $val->checkSelect($answerSecond, 'answerSecond');
+                $val->checkSelect($answerThird, 'answerThird');
+                $val->checkSelect($answerFourth, 'answerFourth');
                 $val->checkSelect($day, 'day');
                 $val->checkSelect($month, 'month');
                 $val->checkSelect($year, 'year');
@@ -96,8 +100,12 @@
             $message="Name: $name<br><br> Surname: $surname<br><br> Birth date: $birthDate<br><br> Sex: $sex<br><br> "
                     . "Phone number: $phoneNumber<br><br> Street: $street<br><br> Building: $building<br><br> Flat: $flat<br><br> "
                     . "Postcode: $postCode<br><br> City: $city<br><br> Country: $country<br><br> First question: $question1<br><br> "
-                    . "Correct answer 1: $correctAnswer1<br><br><b> Your answer: $answerFirst</b><br><br> Second question: $question2<br><br> "
-                    . "Correct answer 2: $correctAnswer2<br><br><b> Your answer: $answerSecond</b><br><br> Tick agreement: $tick<br><br> Date: $date";
+                    . "Correct answer: $correctAnswer1<br><br><b> Your answer: $answerFirst</b><br><br>"
+                    . " Second question: $question2<br><br> Correct answer: $correctAnswer2<br><br><b>"
+                    . " Your answer: $answerSecond</b><br><br> Third question: $question3<br><br>"
+                    . " Correct answer: $correctAnswer3<br><br><b> Your answer: $answerThird</b><br><br>"
+                    . " Fourth question: $question4<br><br> Correct answer: $correctAnswer4<br><br><b>"
+                    . " Your answer: $answerFourth</b><br><br> Tick agreement: $tick<br><br> Date: $date";
             
             $mail->send($email, 'Thank You for registration in contest About Warsaw!',$message );
             }
@@ -329,6 +337,28 @@
                                   <option value="5">5</option>
                                   <option value="7">7</option>
                                   <option value="11">11</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="Question3">
+                        <label class="col-md-4 control-label" for="selectbasic">How many districts Warsaw has?</label>
+                        <div class="col-md-6">
+                            <select id="selectbasic" name="answerThird" class="form-control">
+                                  <option value="0"></option>
+                                  <option value="Stefan Starzyński">Stefan Starzyński</option>
+                                  <option value="Ignacy Wyssogota Zakrzewski">Ignacy Wyssogota Zakrzewski</option>
+                                  <option value="Jakub Ignacy Łaszczyński">Jakub Ignacy Łaszczyński</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="Question4">
+                        <label class="col-md-4 control-label" for="selectbasic">How many districts Warsaw has?</label>
+                        <div class="col-md-6">
+                            <select id="selectbasic" name="answerFourth" class="form-control">
+                                  <option value="0"></option>
+                                  <option value="Jarosław Kaczyński">Jarosław Kaczyński</option>
+                                  <option value="Ryszard Petru">Ryszard Petru</option>
+                                  <option value="Hanna Gronkiewicz Waltz">Hanna Gronkiewicz Waltz</option>
                             </select>
                         </div>
                     </div>
