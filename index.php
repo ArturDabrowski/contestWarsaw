@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+<?php
+require_once 'config/Config.php';
+?>
 <html>
-
 <head>
     <title>Warszawa-konkurs</title>
     <meta charset="UTF-8">
@@ -9,72 +10,64 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
-
     <div id="txt" class="container-fluid front txt">
         <div class="row">
             <div class="col-xs-12 col-md-4">
             </div>
             <div class="col-xs-12 col-md-4">
-                <?php
-            require_once 'config/Config.php';
+<?php
+        if(isset($_POST['sendButton'])){
+            $name = htmlentities($_POST['name']);
+            $surname = htmlentities($_POST['surname']);
+            $date=date('Y-m-d');
+            $email = htmlentities($_POST['email']);
+            $phone = htmlentities($_POST['phone']);
+            $prefix = ($_POST['prefix']);
+            $address = htmlentities($_POST['address']);
+            $sex=$_POST['sex'];
+            $answerFirst = $_POST['answerFirst'];
+            //$questionSecond = $_POST['secondQuestion'];
+            $answerSecond = $_POST['answerSecond'];
+            $day=$_POST['day'];
+            $month=$_POST['month'];
+            $year=$_POST['year'];
+            $birthDate=$year."-".$month."-".$day;
+            $phoneNumber=$prefix." ".$phone;
 
-            if(isset($_POST['sendButton'])){
-                $name = htmlentities($_POST['name']);
-                $surname = htmlentities($_POST['surname']);
-                $date=date('Y-m-d');
-                $email = htmlentities($_POST['email']);
-                $phone = htmlentities($_POST['phone']);
-                $prefix = ($_POST['prefix']);
-                $address = htmlentities($_POST['address']);
-                $sex=$_POST['sex'];
-                $answerFirst = $_POST['answerFirst'];
-                //$questionSecond = $_POST['secondQuestion'];
-                $answerSecond = $_POST['answerSecond'];
-                $day=$_POST['day'];
-                $month=$_POST['month'];
-                $year=$_POST['year'];
-                $birthDate=$year."-".$month."-".$day;
-                $phoneNumber=$prefix." ".$phone;
-                
-                
-            
-                $val=new Validate();
-                $val->checkEmpty($name, 'name');
-                $val->checkEmpty($surname, 'surname');
-                $val->checkEmpty($address, 'adres');
-                $val->minCharQuantity($name, 'name',25);
-                $val->minCharQuantity($surname, 'surname',40);
-                $val->validateEmail($email, 'email');
-                $val->validatePhone($phone, 'phone');
-                
-                $val->checkSelect($sex, 'sex');
-                $val->checkSelect($answerFirst, 'answerFirst');
-                $val->checkSelect($answerSecond, 'answerSecond');
+            $val=new Validate();
+            $val->checkEmpty($name, 'name');
+            $val->checkEmpty($surname, 'surname');
+            $val->checkEmpty($address, 'adres');
+            $val->minCharQuantity($name, 'name',25);
+            $val->minCharQuantity($surname, 'surname',40);
+            $val->validateEmail($email, 'email');
+            $val->validatePhone($phone, 'phone');
 
-                $val->checkSelect($day, 'day');
-                $val->checkSelect($month, 'month');
-                $val->checkSelect($year, 'year');
-                $val->checkSelect($prefix, 'prefix');
+            $val->checkSelect($sex, 'sex');
+            $val->checkSelect($answerFirst, 'answerFirst');
+            $val->checkSelect($answerSecond, 'answerSecond');
 
-                if(!isset($_POST['tick'])){
-                    $val->isChecked('tick');
-                }
-                
-                if($val->liczError==0) {
-                 $conn = new DbConnect();
-                $query = "INSERT INTO user(name, surname, birthDate, sex, email, phone, address, answerFirst, answerSecond, date) VALUES('$name', '$surname', '$birthDate','$sex', '$email', '$phoneNumber', '$address', '$answerFirst','$answerSecond', '$date')";
+            $val->checkSelect($day, 'day');
+            $val->checkSelect($month, 'month');
+            $val->checkSelect($year, 'year');
+            $val->checkSelect($prefix, 'prefix');
 
-                if ($conn->db->query($query) === TRUE) {
-                    echo "";
-                } else {
-                    echo "Error: " . $query . "<br>" . $conn->db->error;
-                }
+            if(!isset($_POST['tick'])){
+                $val->isChecked('tick');
+            }
 
-                
-         
+            if($val->liczError==0) {
+             $conn = new DbConnect();
+            $query = "INSERT INTO user(name, surname, birthDate, sex, email, phone, address, answerFirst, answerSecond, date) VALUES('$name', '$surname', '$birthDate','$sex', '$email', '$phoneNumber', '$address', '$answerFirst','$answerSecond', '$date')";
+
+            if ($conn->db->query($query) === TRUE) {
+                echo "";
+            } else {
+                echo "Error: " . $query . "<br>" . $conn->db->error;
+            }
+
+
             $date= date('Y-m-d');
             $question1="Which answer is correct. How many people lives in Warsaw?";
             $question2="Which answer is correct. How many districts Warsaw has?";
